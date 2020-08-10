@@ -4,7 +4,7 @@ import { Resizable } from "re-resizable";
 import CodeEditor from "./components/codeeditor/codeeditor";
 function App() {
   const style = {
-    backgroundColor: "#01252f",
+    backgroundColor: "#01313f",
   };
 
   return (
@@ -21,7 +21,6 @@ function App() {
             width: "100%",
             height: 200,
           }}
-          maxHeight="400"
           enable={{
             top: true,
             right: false,

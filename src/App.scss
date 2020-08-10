@@ -16,7 +16,7 @@ $text-color: #c9c9c9;
   display: flex;
   .left {
     flex: 1;
-    background-color: $primary-light;
+    background-color: $dark;
   }
   .center {
     flex: 3;
@@ -30,6 +30,6 @@ $text-color: #c9c9c9;
   }
   .right {
     flex: 1;
-    background-color: $primary-light;
+    background-color: $dark;
   }
 }
