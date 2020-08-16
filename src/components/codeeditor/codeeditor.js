@@ -6,11 +6,10 @@ import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import uuid from "react-uuid";
 function CodeEditor({ socket }) {
-  const [value, setvalue] = useState("");
   const [code, setCode] = useState("");
 
   const onChange = (newValue) => {
-    setvalue(newValue);
+    sendcode(newValue);
   };
 
   const joinroom = (username, roomname) => {
@@ -28,18 +27,15 @@ function CodeEditor({ socket }) {
     });
   }, []);
 
-  const sendcode = () => {
+  const sendcode = (value) => {
     if (value !== "") {
       socket.emit("program", value);
     }
   };
 
   useEffect(() => {
-    sendcode();
-  }, [value]);
-
-  useEffect(() => {
     socket.on("code", (data) => {
+      //add
       setCode(data.text);
     });
   }, [socket]);
