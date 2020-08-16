@@ -1,17 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./codeeditor.scss";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
-function CodeEditor() {
+import uuid from "react-uuid";
+function CodeEditor({ socket }) {
   const [value, setvalue] = useState("");
+  const [code, setCode] = useState("");
 
   const onChange = (newValue) => {
     setvalue(newValue);
   };
 
-  const complie = () => {};
+  const joinroom = (username, roomname) => {
+    if (username !== "" && roomname !== "") {
+      socket.emit("joinRoom", { username, roomname });
+    } else {
+      alert("username and roomname are must !");
+    }
+  };
+
+  useEffect(() => {
+    joinroom(uuid(), "private");
+    socket.on("message", (data) => {
+      console.log(data);
+    });
+  }, []);
+
+  const sendcode = () => {
+    if (value !== "") {
+      socket.emit("program", value);
+    }
+  };
+
+  useEffect(() => {
+    sendcode();
+  }, [value]);
+
+  useEffect(() => {
+    socket.on("code", (data) => {
+      setCode(data.text);
+    });
+  }, [socket]);
+
+  console.log(code);
   return (
     <div className="container">
       <div className="nav">
@@ -39,9 +72,10 @@ function CodeEditor() {
           showLineNumbers: true,
           tabSize: 2,
         }}
+        value={code}
       />
       <div className="run">
-        <button onClick={() => complie()}>Run</button>
+        <button>Run</button>
       </div>
     </div>
   );

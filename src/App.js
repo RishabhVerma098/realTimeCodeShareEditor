@@ -2,17 +2,20 @@ import React from "react";
 import "./App.scss";
 import { Resizable } from "re-resizable";
 import CodeEditor from "./components/codeeditor/codeeditor";
-function App() {
-  const style = {
-    backgroundColor: "#01313f",
-  };
 
+import io from "socket.io-client";
+const socket = io("http://localhost:8000");
+
+const style = {
+  backgroundColor: "#01313f",
+};
+function App() {
   return (
     <div className="App">
       <div className="left"></div>
       <div className="center">
         <div className="code-editor">
-          <CodeEditor />
+          <CodeEditor socket={socket} />
         </div>
         <Resizable
           className="terminal"
