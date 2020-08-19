@@ -1,25 +1,23 @@
 import React from "react";
 import "./App.scss";
-import CodeEditor from "./components/codeeditor/codeeditor";
-import Result from "./components/result/result";
+import Home from "./components/Home/Home";
+import Welcome from "./components/Home/welcome";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import io from "socket.io-client";
-import Contain from "./components/ques/ques";
 const socket = io("http://localhost:8000");
-
 function App() {
   return (
-    <div className="App">
-      <div className="left">
-        <Contain />
-      </div>
-      <div className="center">
-        <div className="code-editor">
-          <CodeEditor socket={socket} />
-        </div>
-        <Result />
-      </div>
-      {/* <div className="right"></div> */}
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Welcome socket={socket} />
+        </Route>
+
+        <Route path="/code/:roomname/:username">
+          <Home socket={socket} />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

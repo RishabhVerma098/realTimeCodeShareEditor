@@ -1,0 +1,54 @@
+$primary: #002a36;
+$primary-light: #01313f;
+$dark: #01252f;
+$green: #659b67;
+$red: #b23e3e;
+$text-color: #c9c9c9;
+.welcome {
+  width: 100%;
+  height: 100vh;
+  background-color: $primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .homepage {
+    h1 {
+      color: $text-color;
+    }
+    width: 400px;
+    height: 400px;
+    background-color: $dark;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    align-items: center;
+    input {
+      color: $text-color;
+      height: 50px;
+      width: 80%;
+      text-decoration: none;
+      background-color: $primary-light;
+      border: none;
+      padding-left: 1rem;
+      border-radius: 5px;
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      font-size: 1rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      width: 100px;
+      border: none;
+      background-color: $red;
+      border-radius: 5px;
+
+      color: $text-color;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
