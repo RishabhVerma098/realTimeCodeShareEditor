@@ -6,13 +6,20 @@ import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import { useDispatch } from "react-redux";
 import { complied_result } from "../../store/actions";
-
+import { useAlert } from "react-alert";
 function CodeEditor({ socket }) {
   const [code, setCode] = useState("");
   const dispatch = useDispatch();
+  const alert = useAlert();
   const onChange = (newValue) => {
     sendcode(newValue);
   };
+
+  useEffect(() => {
+    socket.on("message", (data) => {
+      return alert.success(data.text);
+    });
+  }, []);
 
   const sendcode = (value) => {
     if (value !== "") {
