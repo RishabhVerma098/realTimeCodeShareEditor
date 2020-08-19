@@ -5,9 +5,12 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-solarized_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import uuid from "react-uuid";
+import { useDispatch } from "react-redux";
+import { complied_result } from "../../store/actions";
+
 function CodeEditor({ socket }) {
   const [code, setCode] = useState("");
-
+  const dispatch = useDispatch();
   const onChange = (newValue) => {
     sendcode(newValue);
   };
@@ -42,7 +45,7 @@ function CodeEditor({ socket }) {
 
   useEffect(() => {
     socket.on("complied-code", (data) => {
-      console.log(data);
+      dispatch(complied_result(data));
     });
   }, [socket]);
 

@@ -1,7 +1,10 @@
 import React from "react";
 import { Resizable } from "re-resizable";
-
+import { useSelector } from "react-redux";
 function Result() {
+  const result = useSelector((state) => state.resultReducer);
+  console.log(result, "result");
+
   const style = {
     backgroundColor: "#01313f",
   };
@@ -24,7 +27,9 @@ function Result() {
         topLeft: false,
       }}
       minHeight={30}
-    ></Resizable>
+    >
+      <p></p>
+    </Resizable>
   );
 }
 
