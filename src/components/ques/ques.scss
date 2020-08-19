@@ -12,7 +12,8 @@ $text-color: #c9c9c9;
   color: $text-color;
   .text,
   .table,
-  .box {
+  .box,
+  .point {
     margin-top: 2rem;
   }
   .text {
@@ -29,6 +30,24 @@ $text-color: #c9c9c9;
     td {
       border: 1px solid $text-color;
       padding: 0.5rem;
+    }
+  }
+  .box {
+    ul {
+      margin-top: -1rem;
+      list-style: none;
+      li {
+        margin-top: 1rem;
+      }
+    }
+  }
+  .point {
+    padding: 0rem 1rem 0rem 1rem;
+    li {
+      margin-top: 1rem;
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      line-height: 1.5rem;
     }
   }
 }

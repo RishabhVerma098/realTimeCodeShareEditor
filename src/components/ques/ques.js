@@ -41,20 +41,17 @@ function Ques() {
     },
     {
       style: "box",
-      text: `Input: 3
-      Output: "III"`,
+      text: ["Input: 3", `Output: "III"`],
       heading: `Example 1:`,
     },
     {
       style: "box",
-      text: `Input: 4
-      Output: "IV"`,
+      text: ["Input: 4", `Output: "IV"`],
       heading: `Example 2:`,
     },
     {
       style: "box",
-      text: `Input: 9
-      Output: "IX"`,
+      text: ["Input: 9", `Output: "IX"`],
       heading: `Example 3:`,
     },
   ];
@@ -95,19 +92,22 @@ function Ques() {
                   marginTop: "1rem",
                 }}
               >
-                {element.text}
+                <ul>
+                  {element.text.map((i) => {
+                    return <li>{i}</li>;
+                  })}
+                </ul>
               </p>
             </div>
           );
-        }
-        {
-          /* else if (element.style === "point") {
-          <ul>
-            {element.text.map((i) => {
-              return <li>{i}</li>;
-            })}
-          </ul>;
-        } */
+        } else if (element.style === "point") {
+          return (
+            <ul className="point">
+              {element.text.map((i) => {
+                return <li>{i}</li>;
+              })}
+            </ul>
+          );
         }
       })}
     </div>
