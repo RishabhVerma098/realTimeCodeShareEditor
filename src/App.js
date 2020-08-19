@@ -15,7 +15,7 @@ function App() {
         </div>
         <Result />
       </div>
-      <div className="right"></div>
+      {/* <div className="right"></div> */}
     </div>
   );
 }
