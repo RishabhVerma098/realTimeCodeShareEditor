@@ -1,0 +1,34 @@
+$primary: #002a36;
+$primary-light: #01313f;
+$dark: #01252f;
+$green: #659b67;
+$red: #b23e3e;
+$text-color: #c9c9c9;
+.contain {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 1.5rem;
+  color: $text-color;
+  .text,
+  .table,
+  .box {
+    margin-top: 2rem;
+  }
+  .text {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    line-height: 1.5rem;
+  }
+  .table {
+    width: 100%;
+    background-color: $primary;
+    padding: 1.5rem;
+    border: 1px solid $primary-light;
+    th,
+    td {
+      border: 1px solid $text-color;
+      padding: 0.5rem;
+    }
+  }
+}
