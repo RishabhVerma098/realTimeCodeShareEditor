@@ -40,6 +40,16 @@ function CodeEditor({ socket }) {
     });
   }, [socket]);
 
+  useEffect(() => {
+    socket.on("complied-code", (data) => {
+      console.log(data);
+    });
+  }, [socket]);
+
+  const runCode = () => {
+    socket.emit("compile", code);
+  };
+
   console.log(code);
   return (
     <div className="container">
@@ -71,7 +81,7 @@ function CodeEditor({ socket }) {
         value={code}
       />
       <div className="run">
-        <button>Run</button>
+        <button onClick={() => runCode()}>Run</button>
       </div>
     </div>
   );
