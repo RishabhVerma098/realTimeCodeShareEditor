@@ -22,7 +22,6 @@ function Result() {
     }
   }, [result]);
 
-  console.log(data);
   return (
     <Resizable
       className="terminal"
@@ -41,7 +40,7 @@ function Result() {
         bottomLeft: false,
         topLeft: false,
       }}
-      minHeight={30}
+      minHeight={70}
     >
       <div className="result">
         <h3>Output:</h3>
