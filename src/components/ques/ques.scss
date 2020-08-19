@@ -4,11 +4,38 @@ $dark: #01252f;
 $green: #659b67;
 $red: #b23e3e;
 $text-color: #c9c9c9;
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
 .contain {
   width: 100%;
   height: 100vh;
   overflow-y: auto;
   padding: 1.5rem;
+  @include scrollbars(10px, $primary, $dark);
   color: $text-color;
   .text,
   .table,
@@ -28,7 +55,7 @@ $text-color: #c9c9c9;
     border: 1px solid $primary-light;
     th,
     td {
-      border: 1px solid $text-color;
+      border: 1px solid rgb(116, 116, 116);
       padding: 0.5rem;
     }
   }
