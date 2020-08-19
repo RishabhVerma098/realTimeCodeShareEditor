@@ -16,7 +16,10 @@ function Welcome({ socket }) {
   return (
     <div className="welcome">
       <div className="homepage">
-        <h1>Welcome 🙏</h1>
+        <h1>Welcome 🙏 </h1>
+        <h4>
+          Real-time colaborative editor ,<br /> By Rishabh verma
+        </h4>
         <input
           placeholder="Enter your username"
           value={username}
