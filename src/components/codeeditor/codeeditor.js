@@ -53,7 +53,6 @@ function CodeEditor({ socket }) {
     socket.emit("compile", code);
   };
 
-  console.log(code);
   return (
     <div className="container">
       <div className="nav">
